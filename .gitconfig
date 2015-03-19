@@ -1,3 +1,4 @@
+# pinched from https://github.com/durdn/cfg/blob/master/.gitconfig
 [user]
     name = Your Name
     email = you@email.com
