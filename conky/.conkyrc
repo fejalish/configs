@@ -1,0 +1,87 @@
+# UBUNTU-CONKY
+# A comprehensive conky script, configured for use on
+# Ubuntu / Debian Gnome, without the need for any external scripts.
+#
+# Based on conky-jc and the default .conkyrc.
+# INCLUDES:
+# - tail of /var/log/messages 
+# - netstat connections to your computer
+#
+# -- Pengo (conky@pengo.us)
+#
+
+# Create own window instead of using desktop (required in nautilus)
+# own_window yes
+#own_window_type root #override
+# own_window_transparent yes
+# own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
+
+# Use double buffering (reduces flicker, may not work for everyone)
+double_buffer yes
+
+override_utf8_locale yes
+
+# fiddle with window
+use_spacer right
+use_xft no
+
+# Update interval in seconds
+update_interval 3.0
+
+maximum_width 250
+
+draw_shades no
+
+draw_outline no # amplifies text if yes
+draw_borders no
+uppercase no # set to yes if you want all text to be in uppercase
+
+default_color dddddd
+
+own_window_colour grey
+own_window_transparent yes
+
+# Text alignment, other possible values are commented
+alignment top_left
+
+
+# Gap between borders of screen and text
+gap_x 15
+gap_y 20
+
+# stuff after 'TEXT' will be formatted on screen
+
+use_xft yes
+xftfont Bitstream Vera Sans Mono:size=9
+xftalpha 0.8
+
+
+TEXT
+
+${execi 1000 cal -3 | cut -c23-43}
+$time ${alignr}$uptime
+
+$nodename $kernel
+${freq}MHz   Load: ${loadavg}
+${cpugraph cpu0 20,250 aaaaaa ffffff}
+CPU1: ${cpu cpu1}%             CPU2: ${cpu cpu2}%
+CPU3: ${cpu cpu3}%             CPU4: ${cpu cpu4}%
+${cpugraph cpu1 20,120 aaaaaa ffffff} ${cpugraph cpu2 20,121 aaaaaa ffffff}
+${cpugraph cpu3 20,120 aaaaaa ffffff} ${cpugraph cpu4 20,121 aaaaaa ffffff}
+NAME                CPU%    MEM%
+${top name 1}   ${top cpu 1}  ${top mem 1}
+${top name 2}   ${top cpu 2}  ${top mem 2}
+${top name 3}   ${top cpu 3}  ${top mem 3}
+
+RAM:   $memperc%   ${membar 6}
+Root:  ${fs_free_perc /}%   ${fs_bar 6 /} 
+
+${alignr}IP: ${addr wlan0}
+Down: ${downspeed wlan0} k/s ${alignr}Up: ${upspeed wlan0} k/s
+${downspeedgraph wlan0 20,120 aaaaaa dddddd} ${alignr}${upspeedgraph wlan0 
+20,121 aaaaaa dddddd}
+Total: ${totaldown wlan0} ${alignr}Total: ${totalup wlan0}
+In: ${tcp_portmon 1 32767 count} ${alignc}Out: ${tcp_portmon 32768 
+61000 count}${alignr}Tot: ${tcp_portmon 1 65535 count}
+
+
