@@ -1,0 +1,21 @@
+{
+	"color_scheme": "Packages/Predawn/predawn.tmTheme",
+	"dictionary": "Packages/Language - English/en_GB.dic",
+	"font_face": "Droid Sans Mono",
+	"font_size": 16,
+	"ignored_packages":
+	[
+		"Vintage"
+	],
+	"indent_to_bracket": true,
+	"predawn_findreplace_small": true,
+	"predawn_sidebar_arrows": true,
+	"predawn_sidebar_medium": true,
+	"predawn_tabs_active_underline": false,
+	"predawn_tabs_small": true,
+	"preview_on_click": false,
+	"show_full_path": true,
+	"theme": "predawn-DEV.sublime-theme",
+	"trim_trailing_white_space_on_save": true,
+	"word_wrap": "true"
+}
